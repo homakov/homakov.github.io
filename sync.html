@@ -1,0 +1,55 @@
+<html>
+
+<p>
+<center>
+
+  <button id="powerbtn" onclick="state.is_on = !state.is_on"></button>
+  <button onclick="state.tps=100">EOS!</button>
+
+</center>
+</p>
+<table style="float:right"><tr>
+  <td>
+<img id=laptop height=100px src="./laptopon.png" style=" display: inline-block;">
+</td>
+
+
+<td id=blocks> 
+</td>
+
+
+<td>
+<img width=100px src="./decent.png">
+</td></tr>
+</table>
+
+
+<script>
+state = {
+  is_on: true,
+  tps: 1,
+  process_tps: 8,
+  tail: 0
+}
+
+  setInterval(()=>{
+    laptop.src = "./laptop" + (state.is_on ? 'on' : 'off') + '.png'
+    powerbtn.innerHTML = 'Turn '+ (state.is_on ? 'Off' : 'On')
+
+    state.tail += state.tps
+
+    if (state.is_on && state.tail > 2) state.tail -= state.process_tps
+
+    if (state.tail < 0) state.tail = 0
+
+    let blocks_left = state.tail
+
+
+    blocks.innerHTML = Array(1 + blocks_left).join(`<div style="min-width: 50px; height: 50px; border-style: solid; border-radius: 2px; border-right:none; display: inline-block;">&nbsp;</div>`)
+  }, 100)
+
+
+</script>
+
+
+</html>
