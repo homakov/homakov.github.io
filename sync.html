@@ -3,6 +3,12 @@
 <p>
 <center>
 
+  <div class="slidecontainer">
+Tps <input type="range" min="0" max="40" value="0" class="slider" id="tps">
+Download tps <input type="range" min="0" value="0" max="40" class="slider" id="download_tps">
+Process tps <input type="range" min="0" value="0" max="40" class="slider" id="process_tps">
+  </div>
+
   <button id="powerbtn" onclick="state.is_on = !state.is_on"></button>
   <button onclick="state.tps=100">EOS!</button>
 
@@ -14,7 +20,7 @@
 </td>
 
 
-<td id=blocks> 
+<td width=1000px  id=blocks> 
 </td>
 
 
@@ -24,29 +30,83 @@
 </table>
 
 
+<style>
+  
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 15px;
+  border-radius: 5px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #4caf50;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #4caf50;
+  cursor: pointer;
+}
+
+</style>
+
 <script>
 state = {
   is_on: true,
-  tps: 1,
+
+  tps: 3,
   process_tps: 8,
-  tail: 0
+  download_tps: 1,
+
+  tail: 0,
+  download_tail: 0
 }
 
   setInterval(()=>{
+    state.tps = parseInt(tps.value)
+    state.download_tps = parseInt(download_tps.value)
+    state.process_tps = parseInt(process_tps.value)
+
+
     laptop.src = "./laptop" + (state.is_on ? 'on' : 'off') + '.png'
     powerbtn.innerHTML = 'Turn '+ (state.is_on ? 'Off' : 'On')
 
     state.tail += state.tps
 
-    if (state.is_on && state.tail > 2) state.tail -= state.process_tps
+    if (state.is_on){
+
+      if (state.download_tail > 0) {
+        state.download_tail -= state.process_tps
+      }
+      if (state.tail > 0) {
+        // move from tail to downloaded
+        state.tail -= state.download_tps
+        state.download_tail += state.download_tps
+      }
+
+    }
 
     if (state.tail < 0) state.tail = 0
+    if (state.download_tail < 0) state.download_tail = 0
 
-    let blocks_left = state.tail
 
 
-    blocks.innerHTML = Array(1 + blocks_left).join(`<div style="min-width: 50px; height: 50px; border-style: solid; border-radius: 2px; border-right:none; display: inline-block;">&nbsp;</div>`)
-  }, 100)
+    blocks.innerHTML = Array(1 + state.tail).join(`<div style="min-width: 50px; height: 50px; border-style: solid; border-radius: 2px; border-right:none; display: inline-block;">&nbsp;</div>`) + Array(1 + state.download_tail).join(`<div style="min-width: 50px; height: 50px; border-style: solid; border-radius: 2px; border-right:none; display: inline-block; background-color: blue">&nbsp;</div>`) 
+  }, 500)
 
 
 </script>
