@@ -4,13 +4,14 @@
 <center>
 
   <div class="slidecontainer">
-Tps <input type="range" min="0" max="40" value="0" class="slider" id="tps">
-Download tps <input type="range" min="0" value="0" max="40" class="slider" id="download_tps">
-Process tps <input type="range" min="0" value="0" max="40" class="slider" id="process_tps">
+Network tps: <span id="tps_v"></span>
+<input type="range" min="0" max="40" value="0" class="slider" id="tps">
+Download tps: <span id="download_tps_v"></span> <input type="range" min="0" value="0" max="40" class="slider" id="download_tps">
+Process tps: <span id="process_tps_v"></span> <input type="range" min="0" value="0" max="40" class="slider" id="process_tps">
   </div>
+  <p id="info"></p>
 
   <button id="powerbtn" onclick="state.is_on = !state.is_on"></button>
-  <button onclick="state.tps=100">EOS!</button>
 
 </center>
 </p>
@@ -20,7 +21,7 @@ Process tps <input type="range" min="0" value="0" max="40" class="slider" id="pr
 </td>
 
 
-<td width=1000px  id=blocks> 
+<td width=90%  id=blocks> 
 </td>
 
 
@@ -31,6 +32,14 @@ Process tps <input type="range" min="0" value="0" max="40" class="slider" id="pr
 
 
 <style>
+.b{
+  min-width: 20px; 
+  height: 20px; 
+  border-style: solid; 
+  border-radius: 2px; 
+
+  display: inline-block;
+}
   
 .slider {
   -webkit-appearance: none;
@@ -77,9 +86,9 @@ state = {
 }
 
   setInterval(()=>{
-    state.tps = parseInt(tps.value)
-    state.download_tps = parseInt(download_tps.value)
-    state.process_tps = parseInt(process_tps.value)
+    tps_v.innerHTML = state.tps = parseInt(tps.value)
+    download_tps_v.innerHTML = state.download_tps = parseInt(download_tps.value)
+    process_tps_v.innerHTML = state.process_tps = parseInt(process_tps.value)
 
 
     laptop.src = "./laptop" + (state.is_on ? 'on' : 'off') + '.png'
@@ -89,13 +98,14 @@ state = {
 
     if (state.is_on){
 
-      if (state.download_tail > 0) {
-        state.download_tail -= state.process_tps
-      }
       if (state.tail > 0) {
         // move from tail to downloaded
         state.tail -= state.download_tps
         state.download_tail += state.download_tps
+      }
+
+      if (state.download_tail > 0) {
+        state.download_tail -= state.process_tps
       }
 
     }
@@ -103,10 +113,12 @@ state = {
     if (state.tail < 0) state.tail = 0
     if (state.download_tail < 0) state.download_tail = 0
 
+      info.innerHTML=`Tps ${state.tps}`
 
 
-    blocks.innerHTML = Array(1 + state.tail).join(`<div style="min-width: 50px; height: 50px; border-style: solid; border-radius: 2px; border-right:none; display: inline-block;">&nbsp;</div>`) + Array(1 + state.download_tail).join(`<div style="min-width: 50px; height: 50px; border-style: solid; border-radius: 2px; border-right:none; display: inline-block; background-color: blue">&nbsp;</div>`) 
-  }, 500)
+
+    blocks.innerHTML = Array(1 + state.tail).join(`<div class="b">&nbsp;</div>&nbsp;`) + Array(1 + state.download_tail).join(`<div class="b" style="background-color: blue">&nbsp;</div>&nbsp;`) 
+  }, 1000)
 
 
 </script>
