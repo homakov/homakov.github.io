@@ -81,6 +81,171 @@
             border-color: #3498db;
         }
 
+        .entity-formation-section {
+            background: rgba(255,255,255,0.95);
+            border: 2px solid #28a745;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 25px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .entity-formation-section h3 {
+            margin: 0 0 15px 0;
+            color: #28a745;
+            font-size: 1.2em;
+        }
+
+        .formation-panel {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .formation-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .formation-group label {
+            font-weight: bold;
+            color: #2c3e50;
+            font-size: 0.9em;
+        }
+
+        .formation-group input, .formation-group select {
+            padding: 8px 12px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 14px;
+            background: white;
+            transition: border-color 0.3s ease;
+        }
+
+        .formation-group input:focus, .formation-group select:focus {
+            outline: none;
+            border-color: #28a745;
+        }
+
+        .formation-group input::placeholder {
+            color: #999;
+        }
+
+        .simple-formation-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .validators-section {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+        }
+
+        .validators-section h4 {
+            margin: 0 0 10px 0;
+            color: #495057;
+        }
+
+        .validator-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+            align-items: center;
+        }
+
+        .validator-name {
+            flex: 2;
+            padding: 8px 12px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        .validator-weight {
+            flex: 1;
+            padding: 8px 12px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        .btn-small {
+            padding: 6px 10px;
+            font-size: 12px;
+            min-width: auto;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background-color: #c82333;
+        }
+
+        .threshold-section {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+        }
+
+        .threshold-section label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #495057;
+        }
+
+        #thresholdSlider {
+            width: 100%;
+            height: 6px;
+            border-radius: 3px;
+            background: #ddd;
+            outline: none;
+            margin-bottom: 10px;
+        }
+
+        #thresholdSlider::-webkit-slider-thumb {
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #28a745;
+            cursor: pointer;
+        }
+
+        #thresholdSlider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #28a745;
+            cursor: pointer;
+            border: none;
+        }
+
+        .threshold-info {
+            color: #6c757d;
+            font-size: 14px;
+        }
+
+        #thresholdValue {
+            font-weight: bold;
+            color: #28a745;
+        }
+
+        #totalWeight {
+            font-weight: bold;
+            color: #007bff;
+        }
+
         .entities-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -415,26 +580,134 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: rgba(20, 20, 20, 0.95);
-            backdrop-filter: blur(15px);
-            padding: 20px;
-            border-top: 2px solid #007bff;
+            background: rgba(15, 15, 15, 0.96);
+            backdrop-filter: blur(20px);
+            padding: 12px 20px;
+            border-top: 1px solid #007bff;
             z-index: 1000;
-            box-shadow: 0 -5px 20px rgba(0,0,0,0.3);
+            box-shadow: 0 -2px 15px rgba(0,0,0,0.4);
+        }
+
+        .time-machine-main {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+            gap: 15px;
+        }
+
+        .time-info-compact {
+            display: flex;
+            align-items: center;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 0.75em;
+            color: #aaa;
+            gap: 8px;
+            flex: 1;
+            min-width: 0;
+        }
+
+        .time-info-compact.current {
+            color: #00ff88;
+            font-weight: bold;
+        }
+
+        .time-nav-controls {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .time-utility-controls {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .time-btn-compact {
+            background: #2a2a2a;
+            color: white;
+            border: 1px solid #444;
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.75em;
+            transition: all 0.15s ease;
+            min-width: 28px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .time-btn-compact:hover {
+            background: #007bff;
+            border-color: #007bff;
+            transform: translateY(-1px);
+        }
+
+        .time-btn-compact.primary {
+            background: #007bff;
+            border-color: #007bff;
+        }
+
+        .time-btn-compact.live {
+            background: #00ff88;
+            color: #000;
+            border-color: #00ff88;
+            font-weight: bold;
+            padding: 4px 10px;
+            min-width: 45px;
+        }
+
+        .time-btn-compact.live:hover {
+            background: #00cc6a;
+            border-color: #00cc6a;
+        }
+
+        .time-btn-mini {
+            background: #333;
+            color: #aaa;
+            border: 1px solid #555;
+            padding: 2px 6px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 0.7em;
+            transition: all 0.15s ease;
+            min-width: 22px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .time-btn-mini:hover {
+            background: #555;
+            color: white;
+        }
+
+        .time-btn-mini.warning {
+            background: #ffc107;
+            color: #212529;
+            border-color: #ffc107;
+        }
+
+        .time-btn-mini.warning:hover {
+            background: #e0a800;
+            border-color: #e0a800;
         }
 
         .time-slider-container {
             position: relative;
-            margin: 10px 0;
             width: 100%;
             max-width: 100%;
         }
 
         .time-slider {
             width: 100%;
-            height: 6px;
-            border-radius: 3px;
-            background: linear-gradient(90deg, #333 0%, #666 100%);
+            height: 4px;
+            border-radius: 2px;
+            background: linear-gradient(90deg, #333 0%, #555 100%);
             outline: none;
             -webkit-appearance: none;
             cursor: pointer;
@@ -443,45 +716,28 @@
         .time-slider::-webkit-slider-thumb {
             -webkit-appearance: none;
             appearance: none;
-            width: 18px;
-            height: 18px;
+            width: 14px;
+            height: 14px;
             border-radius: 50%;
             background: linear-gradient(45deg, #007bff, #0056b3);
             cursor: pointer;
-            box-shadow: 0 2px 8px rgba(0,123,255,0.4);
+            box-shadow: 0 1px 4px rgba(0,123,255,0.4);
             transition: all 0.2s ease;
         }
 
         .time-slider::-webkit-slider-thumb:hover {
-            transform: scale(1.2);
-            box-shadow: 0 4px 12px rgba(0,123,255,0.6);
+            transform: scale(1.1);
+            box-shadow: 0 2px 8px rgba(0,123,255,0.6);
         }
 
         .time-slider::-moz-range-thumb {
-            width: 18px;
-            height: 18px;
+            width: 14px;
+            height: 14px;
             border-radius: 50%;
             background: linear-gradient(45deg, #007bff, #0056b3);
             cursor: pointer;
             border: none;
-            box-shadow: 0 2px 8px rgba(0,123,255,0.4);
-        }
-
-        .time-info {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-family: 'Monaco', 'Menlo', monospace;
-            font-size: 0.85em;
-            color: #ccc;
-            margin-bottom: 8px;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .time-info.current {
-            color: #00ff88;
-            font-weight: bold;
+            box-shadow: 0 1px 4px rgba(0,123,255,0.4);
         }
 
         .server-input-section {
@@ -492,6 +748,45 @@
             margin-bottom: 15px;
             font-family: 'Monaco', 'Menlo', monospace;
             font-size: 0.85em;
+        }
+
+        .server-io-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .server-column {
+            background: rgba(255,255,255,0.95);
+            border: 2px solid #007bff;
+            border-radius: 10px;
+            padding: 15px;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 0.85em;
+        }
+
+        .server-column-header {
+            font-weight: bold;
+            color: #007bff;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .server-section {
+            margin-bottom: 20px;
+        }
+
+        .server-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .server-section h4 {
+            margin: 0 0 10px 0;
+            color: #495057;
+            font-size: 0.9em;
+            font-weight: bold;
         }
 
         .input-item {
@@ -555,61 +850,73 @@
             font-style: italic;
         }
 
-        .time-controls {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 8px;
-            margin-top: 8px;
-            flex-wrap: wrap;
-        }
-
-        .time-btn {
-            background: #333;
-            color: white;
-            border: 1px solid #555;
-            padding: 6px 12px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 0.8em;
-            transition: all 0.2s ease;
-            min-width: 40px;
-        }
-
-        .time-btn:hover {
-            background: #007bff;
-            border-color: #007bff;
-            transform: translateY(-1px);
-        }
-
-        .time-btn:active {
-            transform: translateY(0);
-        }
-
-        .time-btn.primary {
-            background: #007bff;
-            border-color: #007bff;
-        }
-
-        .time-btn.warning {
-            background: #ffc107;
-            color: #212529;
-            border-color: #ffc107;
-        }
-
         .time-progress-bar {
             position: absolute;
             top: 0;
             left: 0;
-            height: 6px;
+            height: 4px;
             background: linear-gradient(90deg, #007bff, #00ff88);
-            border-radius: 3px;
+            border-radius: 2px;
             transition: width 0.3s ease;
             pointer-events: none;
         }
 
         body {
-            padding-bottom: 120px; /* Make room for fixed time machine */
+            padding-bottom: 70px; /* Make room for compact time machine */
+        }
+
+        /* Tab Styles */
+        .actionable-tabs-container {
+            background: rgba(255,255,255,0.95);
+            border: 2px solid #007bff;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .tabs-header {
+            display: flex;
+            background: #f8f9fa;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .tab-button {
+            flex: 1;
+            background: transparent;
+            border: none;
+            padding: 15px 20px;
+            font-size: 1em;
+            font-weight: 600;
+            color: #6c757d;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border-bottom: 3px solid transparent;
+        }
+
+        .tab-button:hover {
+            background: rgba(0, 123, 255, 0.1);
+            color: #007bff;
+        }
+
+        .tab-button.active {
+            background: white;
+            color: #007bff;
+            border-bottom: 3px solid #007bff;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 20px;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
@@ -620,19 +927,33 @@
     
     <div class="container">
 
-        <div class="server-input-section" id="serverInputSection" style="display: none;">
-            <div class="server-input-header">
-                <div class="server-input-title">📨 Server Input (What's happening this tick)</div>
-                <div id="serverInputStatus"></div>
-            </div>
-            <div class="server-input-content">
-                <div class="input-group">
+        <div class="server-io-container" id="serverIOContainer" style="display: none;">
+            <div class="server-column">
+                <div class="server-column-header">
+                    📨 Server Input (What's happening this tick)
+                    <span id="serverInputStatus" style="font-weight: normal; color: #6c757d; font-size: 0.85em;"></span>
+                </div>
+                
+                <div class="server-section">
                     <h4>🖥️ Server Transactions</h4>
                     <div id="serverTxsList"></div>
                 </div>
-                <div class="input-group">
+                
+                <div class="server-section">
                     <h4>🔄 Entity Inputs</h4>
                     <div id="entityInputsList"></div>
+                </div>
+            </div>
+            
+            <div class="server-column">
+                <div class="server-column-header">
+                    📤 Server Output (What's being sent and where)
+                    <span id="serverOutputStatus" style="font-weight: normal; color: #6c757d; font-size: 0.85em;"></span>
+                </div>
+                
+                <div class="server-section">
+                    <h4>🚀 Entity Outputs</h4>
+                    <div id="entityOutputsList"></div>
                 </div>
             </div>
         </div>
@@ -648,65 +969,124 @@
             <!-- Entity cards will be populated here -->
         </div>
 
-        <div class="controls">
-            <h3>🎮 Interactive Controls</h3>
-            <div class="control-panel">
-                <div class="control-group">
-                    <label>📍 Select Replica:</label>
-                    <select id="replicaSelect"></select>
+        <div class="actionable-tabs-container">
+            <div class="tabs-header">
+                <button class="tab-button active" onclick="switchTab('controls')" id="controlsTab">
+                    🎮 Interactive Controls
+                </button>
+                <button class="tab-button" onclick="switchTab('formation')" id="formationTab">
+                    🏗️ Entity Formation
+                </button>
+            </div>
+            
+            <div id="controlsTabContent" class="tab-content active">
+                <div class="control-panel">
+                    <div class="control-group">
+                        <label>📍 Select Replica:</label>
+                        <select id="replicaSelect"></select>
+                    </div>
+                    <div class="control-group">
+                        <label>⚡ Select Action:</label>
+                        <select id="actionSelect">
+                            <option value="chat">💬 Chat Message</option>
+                            <option value="propose">📝 Create Proposal</option>
+                            <option value="vote">🗳️ Vote on Proposal</option>
+                        </select>
+                    </div>
+                    <div class="control-group" id="inputGroup">
+                        <label id="inputLabel">💬 Message:</label>
+                        <input type="text" id="inputField" placeholder="Enter your message...">
+                    </div>
+                    <div class="control-group" id="proposalGroup" style="display: none;">
+                        <label>📝 Proposal:</label>
+                        <input type="text" id="proposalField" placeholder="Enter proposal text...">
+                    </div>
+                    <div class="control-group" id="voteGroup" style="display: none;">
+                        <label>🗳️ Vote on Proposal:</label>
+                        <select id="proposalSelect"></select>
+                        <select id="voteChoice">
+                            <option value="yes">✅ Yes</option>
+                            <option value="no">❌ No</option>
+                        </select>
+                    </div>
+                    <div class="button-group">
+                        <button class="btn btn-primary" onclick="executeAction()">🚀 Execute Action</button>
+                        <button class="btn btn-secondary" onclick="refreshView()">🔄 Refresh View</button>
+                        <button class="btn btn-secondary" onclick="checkForUpdates()">🔍 Check for Updates</button>
+                    </div>
                 </div>
-                <div class="control-group">
-                    <label>⚡ Select Action:</label>
-                    <select id="actionSelect">
-                        <option value="chat">💬 Chat Message</option>
-                        <option value="propose">📝 Create Proposal</option>
-                        <option value="vote">🗳️ Vote on Proposal</option>
-                    </select>
-                </div>
-                <div class="control-group" id="inputGroup">
-                    <label id="inputLabel">💬 Message:</label>
-                    <input type="text" id="inputField" placeholder="Enter your message...">
-                </div>
-                <div class="control-group" id="proposalGroup" style="display: none;">
-                    <label>📝 Proposal:</label>
-                    <input type="text" id="proposalField" placeholder="Enter proposal text...">
-                </div>
-                <div class="control-group" id="voteGroup" style="display: none;">
-                    <label>🗳️ Vote on Proposal:</label>
-                    <select id="proposalSelect"></select>
-                    <select id="voteChoice">
-                        <option value="yes">✅ Yes</option>
-                        <option value="no">❌ No</option>
-                    </select>
-                </div>
-                <div class="button-group">
-                    <button class="btn btn-primary" onclick="executeAction()">🚀 Execute Action</button>
-                    <button class="btn btn-secondary" onclick="refreshView()">🔄 Refresh View</button>
-                    <button class="btn btn-secondary" onclick="checkForUpdates()">🔍 Check for Updates</button>
+            </div>
+            
+            <div id="formationTabContent" class="tab-content">
+                <div class="simple-formation-panel">
+                    <div class="formation-group">
+                        <label for="entityNameInput">🏷️ Entity Name:</label>
+                        <input type="text" id="entityNameInput" placeholder="e.g., trading, chat, governance">
+                    </div>
+                    
+                    <div class="validators-section">
+                        <h4>👥 Validators:</h4>
+                        <div id="validatorsList">
+                            <div class="validator-row">
+                                <input type="text" class="validator-name" placeholder="alice" value="alice">
+                                <input type="number" class="validator-weight" placeholder="1" value="1" min="1" oninput="updateTotalWeight()">
+                                <button class="btn btn-danger btn-small" onclick="removeValidator(this)">❌</button>
+                            </div>
+                            <div class="validator-row">
+                                <input type="text" class="validator-name" placeholder="bob" value="bob">
+                                <input type="number" class="validator-weight" placeholder="1" value="1" min="1" oninput="updateTotalWeight()">
+                                <button class="btn btn-danger btn-small" onclick="removeValidator(this)">❌</button>
+                            </div>
+                            <div class="validator-row">
+                                <input type="text" class="validator-name" placeholder="carol" value="carol">
+                                <input type="number" class="validator-weight" placeholder="1" value="1" min="1" oninput="updateTotalWeight()">
+                                <button class="btn btn-danger btn-small" onclick="removeValidator(this)">❌</button>
+                            </div>
+                        </div>
+                        <button class="btn btn-secondary" onclick="addValidatorRow()">➕ Add New Validator</button>
+                    </div>
+                    
+                    <div class="threshold-section">
+                        <label for="thresholdSlider">🎯 Threshold: <span id="thresholdValue">2</span></label>
+                        <input type="range" id="thresholdSlider" min="1" max="10" value="2" oninput="updateThreshold()">
+                        <div class="threshold-info">
+                            <span>Total Weight: <span id="totalWeight">3</span></span>
+                        </div>
+                    </div>
+                    
+                    <div class="button-group">
+                        <button class="btn btn-primary" onclick="createSimpleEntity()">🚀 Create Entity</button>
+                        <button class="btn btn-secondary" onclick="clearSimpleForm()">🗑️ Clear Form</button>
+                    </div>
                 </div>
             </div>
         </div>
+
 
 
     </div>
 
     <!-- Fixed Time Machine Bar -->
     <div class="time-machine">
-        <div class="time-info" id="timeInfo">
-            <span>⏰ No history yet</span>
-            <span></span>
-            <span></span>
+        <div class="time-machine-main">
+            <div class="time-info-compact" id="timeInfo">
+                <span>⏰ No history yet</span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="time-nav-controls">
+                <button class="time-btn-compact" onclick="stepBackward()" title="Step Back (← arrow)">⏪</button>
+                <button class="time-btn-compact" onclick="stepForward()" title="Step Forward (→ arrow)">⏩</button>
+                <button class="time-btn-compact live" onclick="goToHistoryEnd()" title="Go to Current (End key)">⚡ LIVE</button>
+            </div>
+            <div class="time-utility-controls">
+                <button class="time-btn-mini" onclick="goToHistoryStart()" title="Go to Start (Home key)">⏮️</button>
+                <button class="time-btn-mini warning" onclick="resetTimeMachine()" title="Clear History">🗑️</button>
+            </div>
         </div>
         <div class="time-slider-container">
             <div class="time-progress-bar" id="timeProgressBar"></div>
             <input type="range" id="timeSlider" class="time-slider" min="0" max="0" value="0" disabled>
-        </div>
-        <div class="time-controls">
-            <button class="time-btn" onclick="goToHistoryStart()" title="Go to Start (Home key)">⏮️</button>
-            <button class="time-btn" onclick="stepBackward()" title="Step Back (← arrow)">⏪</button>
-            <button class="time-btn" onclick="stepForward()" title="Step Forward (→ arrow)">⏩</button>
-            <button class="time-btn primary" onclick="goToHistoryEnd()" title="Go to Current (End key)">⏭️</button>
-            <button class="time-btn warning" onclick="resetTimeMachine()" title="Clear History">🗑️</button>
         </div>
     </div>
 
@@ -725,7 +1105,7 @@
         // Auto-reload detection using HTTP polling
         async function checkForChanges() {
             try {
-                const response = await fetch('./server.js', { method: 'HEAD' });
+                const response = await fetch('./dist/server.js', { method: 'HEAD' });
                 const modified = response.headers.get('last-modified');
                 
                 if (lastModified && modified !== lastModified) {
@@ -802,11 +1182,11 @@
             entitiesGrid.innerHTML = '';
             
             // Determine which state to show
-            let replicasToShow, serverInputToShow;
+            let replicasToShow, serverInputToShow, snapshot;
             let isHistorical = false;
             
             if (currentTimeIndex >= 0) {
-                const snapshot = XLN.getSnapshot(currentTimeIndex);
+                snapshot = XLN.getSnapshot(currentTimeIndex);
                 if (snapshot) {
                     replicasToShow = snapshot.replicas;
                     serverInputToShow = snapshot.serverInput;
@@ -816,7 +1196,11 @@
             
             if (!replicasToShow) {
                 replicasToShow = xlnEnv.replicas;
-                serverInputToShow = null; // No server input for current time
+                // Get the most recent server input from history
+                const history = XLN.getHistory();
+                if (history.length > 0) {
+                    serverInputToShow = history[history.length - 1].serverInput;
+                }
                 currentTimeIndex = -1; // Reset to current if snapshot not found
             }
             
@@ -825,6 +1209,21 @@
             
             // Render server input section
             renderServerInput(serverInputToShow, isHistorical);
+            
+            // Get server outputs from snapshot 
+            let serverOutputsToShow = [];
+            if (isHistorical && snapshot) {
+                serverOutputsToShow = snapshot.serverOutputs || [];
+            } else if (!isHistorical) {
+                // For current time, get outputs from most recent snapshot
+                const history = XLN.getHistory();
+                if (history.length > 0) {
+                    serverOutputsToShow = history[history.length - 1].serverOutputs || [];
+                }
+            }
+            
+            // Render server output section
+            renderServerOutput(serverOutputsToShow, isHistorical);
             
             // Filter replicas based on selection
             const filteredReplicas = new Map();
@@ -931,18 +1330,25 @@
         
         // Render server input section
         function renderServerInput(serverInput, isHistorical) {
-            const section = document.getElementById('serverInputSection');
+            const container = document.getElementById('serverIOContainer');
             const status = document.getElementById('serverInputStatus');
             const serverTxsList = document.getElementById('serverTxsList');
             const entityInputsList = document.getElementById('entityInputsList');
             
-            if (!serverInput || (!serverInput.serverTxs.length && !serverInput.entityInputs.length)) {
-                section.style.display = 'none';
-                return;
+            // Always show the container
+            container.style.display = 'grid';
+            if (serverInput && (serverInput.serverTxs.length || serverInput.entityInputs.length)) {
+                status.textContent = isHistorical ? ' 🕰️ Historical' : ' ⚡ Current';
+            } else {
+                status.textContent = '';
             }
             
-            section.style.display = 'block';
-            status.textContent = isHistorical ? '🕰️ Historical' : '⚡ Current';
+            // Always render the input data (even if empty for consistency)
+            if (!serverInput) {
+                serverTxsList.innerHTML = '<div class="no-inputs">No server transactions</div>';
+                entityInputsList.innerHTML = '<div class="no-inputs">No entity inputs</div>';
+                return;
+            }
             
             // Render server transactions
             if (serverInput.serverTxs.length > 0) {
@@ -970,12 +1376,12 @@
                 serverTxsList.innerHTML = '<div class="no-inputs">No server transactions</div>';
             }
             
-            // Merge entity inputs before displaying (same logic as server)
-            const mergedInputs = mergeEntityInputsForDisplay(serverInput.entityInputs);
+            // Show individual entity inputs (unmerged) to see all validators
+            const individualInputs = serverInput.entityInputs || [];
             
-            // Render entity inputs (merged)
-            if (mergedInputs.length > 0) {
-                entityInputsList.innerHTML = mergedInputs.map(input => {
+            // Render entity inputs (individual)
+            if (individualInputs.length > 0) {
+                entityInputsList.innerHTML = individualInputs.map(input => {
                     let details = `<div class="input-item">
                         <strong>${input.entityId}:${input.signerId}</strong>`;
                     
@@ -993,14 +1399,18 @@
                         });
                     }
                     
-                    // Show proposed frame details
-                    if (input.proposedFrame) {
-                        details += `<br>🎯 <strong>Proposed Frame:</strong>
-                            <br>  • Hash: ${input.proposedFrame.hash}
-                            <br>  • Height: ${input.proposedFrame.height}
-                            <br>  • Transactions: ${input.proposedFrame.txs.length}
-                            <br>  • Signatures: ${input.proposedFrame.signatures.size}`;
-                    }
+                                    // Show proposed frame details
+                if (input.proposedFrame) {
+                    // Distinguish between new proposals and commit notifications
+                    const isCommitNotification = input.precommits && input.precommits.size > 0;
+                    const frameType = isCommitNotification ? "📋 <strong>Commit Notification:</strong>" : "🎯 <strong>Proposed Frame:</strong>";
+                    
+                    details += `<br>${frameType}
+<br>  • Hash: ${input.proposedFrame.hash}
+<br>  • Height: ${input.proposedFrame.height}
+<br>  • Transactions: ${input.proposedFrame.txs.length}
+<br>  • Signatures: ${input.proposedFrame.signatures.size}`;
+                }
                     
                     // Show precommits details
                     if (input.precommits && input.precommits.size > 0) {
@@ -1016,6 +1426,69 @@
             } else {
                 entityInputsList.innerHTML = '<div class="no-inputs">No entity inputs</div>';
             }
+        }
+        
+        // Render server output section
+        function renderServerOutput(serverOutputs, isHistorical) {
+            const container = document.getElementById('serverIOContainer');
+            const status = document.getElementById('serverOutputStatus');
+            const entityOutputsList = document.getElementById('entityOutputsList');
+            
+            // Container is already shown by renderServerInput, just update status
+            if (serverOutputs && serverOutputs.length) {
+                status.textContent = isHistorical ? ' 🕰️ Historical' : ' ⚡ Current';
+            } else {
+                status.textContent = '';
+            }
+            
+            // Always render the output data (even if empty for consistency)
+            if (!serverOutputs || !serverOutputs.length) {
+                entityOutputsList.innerHTML = '<div class="no-inputs">No entity outputs</div>';
+                return;
+            }
+            
+            // Render entity outputs
+            entityOutputsList.innerHTML = serverOutputs.map((output, index) => {
+                let details = `<div class="input-item">
+                    <strong>📤 ${index + 1}. → ${output.signerId}</strong>`;
+                
+                // Show transactions being sent
+                if (output.entityTxs && output.entityTxs.length > 0) {
+                    details += `<br>📝 <strong>${output.entityTxs.length} transactions:</strong>`;
+                    output.entityTxs.forEach((tx, i) => {
+                        if (tx.type === 'chat') {
+                            details += `<br>  ${i+1}. 💬 Chat: "${tx.data.message}" (from: ${tx.data.from})`;
+                        } else if (tx.type === 'propose') {
+                            details += `<br>  ${i+1}. 📝 Propose: "${tx.data.action.data.message}" (by: ${tx.data.proposer})`;
+                        } else if (tx.type === 'vote') {
+                            details += `<br>  ${i+1}. 🗳️ Vote: ${tx.data.choice} on ${tx.data.proposalId.slice(0,12)}... (by: ${tx.data.voter})`;
+                        }
+                    });
+                }
+                
+                // Show proposed frame being sent
+                if (output.proposedFrame) {
+                    const isCommitNotification = output.precommits && output.precommits.size > 0;
+                    const frameType = isCommitNotification ? "📋 <strong>Commit Notification:</strong>" : "🎯 <strong>Proposed Frame:</strong>";
+                    
+                    details += `<br>${frameType}
+<br>  • Hash: ${output.proposedFrame.hash}
+<br>  • Height: ${output.proposedFrame.height}
+<br>  • Transactions: ${output.proposedFrame.txs.length}
+<br>  • Signatures: ${output.proposedFrame.signatures.size}`;
+                }
+                
+                // Show precommits being sent
+                if (output.precommits && output.precommits.size > 0) {
+                    details += `<br>✅ <strong>${output.precommits.size} precommits:</strong>`;
+                    for (const [signerId, signature] of output.precommits) {
+                        details += `<br>  • ${signerId}: ${signature.slice(0,16)}...`;
+                    }
+                }
+                
+                details += `</div>`;
+                return details;
+            }).join('');
         }
         
         // Merge entity inputs for display (same logic as server)
@@ -1068,7 +1541,7 @@
                 timeSlider.disabled = true;
                 timeSlider.max = 0;
                 timeInfo.innerHTML = '<span>⏰ No history yet</span><span></span><span></span>';
-                timeInfo.className = 'time-info';
+                timeInfo.className = 'time-info-compact';
                 progressBar.style.width = '0%';
                 return;
             }
@@ -1087,7 +1560,7 @@
                     <span>Height: ${xlnEnv.height}</span>
                     <span>${history.length} snapshots</span>
                 `;
-                timeInfo.className = 'time-info current';
+                timeInfo.className = 'time-info-compact current';
             } else {
                 // Historical time
                 sliderValue = currentTimeIndex;
@@ -1098,7 +1571,7 @@
                     <span>Height: ${snapshot.height}</span>
                     <span>${snapshot.description}</span>
                 `;
-                timeInfo.className = 'time-info';
+                timeInfo.className = 'time-info-compact';
             }
             
             timeSlider.value = sliderValue;
@@ -1480,6 +1953,226 @@
             checkForChanges();
         };
 
+        // Simple entity formation functions
+        window.addValidatorRow = () => {
+            const validatorsList = document.getElementById('validatorsList');
+            const newRow = document.createElement('div');
+            newRow.className = 'validator-row';
+            newRow.innerHTML = `
+                <input type="text" class="validator-name" placeholder="validator name">
+                <input type="number" class="validator-weight" placeholder="1" value="1" min="1" oninput="updateTotalWeight()">
+                <button class="btn btn-danger btn-small" onclick="removeValidator(this)">❌</button>
+            `;
+            validatorsList.appendChild(newRow);
+            updateTotalWeight();
+        };
+
+        window.removeValidator = (button) => {
+            const row = button.parentElement;
+            const validatorsList = document.getElementById('validatorsList');
+            if (validatorsList.children.length > 1) {
+                row.remove();
+                updateTotalWeight();
+            } else {
+                alert('Must have at least one validator');
+            }
+        };
+
+        window.updateTotalWeight = () => {
+            const weightInputs = document.querySelectorAll('.validator-weight');
+            let totalWeight = 0;
+            weightInputs.forEach(input => {
+                const weight = parseInt(input.value) || 0;
+                totalWeight += weight;
+            });
+            document.getElementById('totalWeight').textContent = totalWeight;
+            
+            // Update threshold slider max value
+            const thresholdSlider = document.getElementById('thresholdSlider');
+            thresholdSlider.max = totalWeight;
+            
+            // Ensure threshold doesn't exceed total weight
+            const currentThreshold = parseInt(thresholdSlider.value);
+            if (currentThreshold > totalWeight) {
+                thresholdSlider.value = totalWeight;
+                updateThreshold();
+            }
+        };
+
+        window.updateThreshold = () => {
+            const thresholdSlider = document.getElementById('thresholdSlider');
+            const thresholdValue = document.getElementById('thresholdValue');
+            thresholdValue.textContent = thresholdSlider.value;
+        };
+
+        window.createSimpleEntity = () => {
+            if (!xlnEnv) return;
+            
+            // Always go to current time when creating entities
+            currentTimeIndex = -1;
+            
+            const entityName = document.getElementById('entityNameInput').value.trim();
+            const threshold = parseInt(document.getElementById('thresholdSlider').value);
+            
+            // Validation
+            if (!entityName) {
+                alert('Please enter an entity name');
+                return;
+            }
+            
+            if (!/^[a-zA-Z0-9_-]+$/.test(entityName)) {
+                alert('Entity name can only contain letters, numbers, underscores, and hyphens');
+                return;
+            }
+            
+            // Check if entity already exists
+            const existingEntity = Array.from(xlnEnv.replicas.keys()).find(key => key.startsWith(entityName + ':'));
+            if (existingEntity) {
+                alert(`Entity "${entityName}" already exists`);
+                return;
+            }
+            
+            // Collect validators and weights
+            const validatorRows = document.querySelectorAll('.validator-row');
+            const validators = [];
+            const shares = {};
+            
+            for (const row of validatorRows) {
+                const nameInput = row.querySelector('.validator-name');
+                const weightInput = row.querySelector('.validator-weight');
+                
+                const validatorName = nameInput.value.trim();
+                const weight = parseInt(weightInput.value) || 0;
+                
+                if (!validatorName) {
+                    alert('Please enter a name for all validators');
+                    return;
+                }
+                
+                if (!/^[a-zA-Z0-9_-]+$/.test(validatorName)) {
+                    alert(`Validator name "${validatorName}" can only contain letters, numbers, underscores, and hyphens`);
+                    return;
+                }
+                
+                if (weight < 1) {
+                    alert(`Validator "${validatorName}" must have a weight of at least 1`);
+                    return;
+                }
+                
+                if (validators.includes(validatorName)) {
+                    alert(`Validator name "${validatorName}" is duplicated`);
+                    return;
+                }
+                
+                validators.push(validatorName);
+                shares[validatorName] = BigInt(weight);
+            }
+            
+            if (validators.length === 0) {
+                alert('Please add at least one validator');
+                return;
+            }
+            
+            // Calculate total shares and validate threshold
+            const totalShares = Object.values(shares).reduce((sum, val) => sum + val, BigInt(0));
+            if (BigInt(threshold) > totalShares) {
+                alert(`Threshold ${threshold} is higher than total weight ${totalShares}`);
+                return;
+            }
+            
+            // Create consensus config (default to proposer-based for simplicity)
+            const config = {
+                mode: 'proposer-based',
+                threshold: BigInt(threshold),
+                validators: validators,
+                shares: shares
+            };
+            
+            // Create server transactions for all validators
+            const serverTxs = validators.map((signerId, index) => ({
+                type: 'importReplica',
+                entityId: entityName,
+                signerId: signerId,
+                data: {
+                    config: config,
+                    isProposer: index === 0 // First validator is proposer
+                }
+            }));
+            
+            // Process the server transactions
+            const outputs = XLN.processServerInput(xlnEnv, {
+                serverTxs: serverTxs,
+                entityInputs: []
+            });
+            
+            // Process outputs until empty
+            while (outputs.length > 0) {
+                const newOutputs = XLN.processServerInput(xlnEnv, {
+                    serverTxs: [],
+                    entityInputs: outputs
+                });
+                outputs.splice(0, outputs.length, ...newOutputs);
+            }
+            
+            // Success feedback
+            alert(`✅ Entity "${entityName}" created successfully!\\n\\nValidators: ${validators.join(', ')}\\nThreshold: ${threshold}/${totalShares}`);
+            
+            // Clear form and refresh view
+            clearSimpleForm();
+            renderEntities();
+            populateReplicaSelect();
+        };
+
+        window.clearSimpleForm = () => {
+            document.getElementById('entityNameInput').value = '';
+            
+            // Reset to default 3 validators
+            const validatorsList = document.getElementById('validatorsList');
+            validatorsList.innerHTML = `
+                <div class="validator-row">
+                    <input type="text" class="validator-name" placeholder="alice" value="alice">
+                    <input type="number" class="validator-weight" placeholder="1" value="1" min="1" oninput="updateTotalWeight()">
+                    <button class="btn btn-danger btn-small" onclick="removeValidator(this)">❌</button>
+                </div>
+                <div class="validator-row">
+                    <input type="text" class="validator-name" placeholder="bob" value="bob">
+                    <input type="number" class="validator-weight" placeholder="1" value="1" min="1" oninput="updateTotalWeight()">
+                    <button class="btn btn-danger btn-small" onclick="removeValidator(this)">❌</button>
+                </div>
+                <div class="validator-row">
+                    <input type="text" class="validator-name" placeholder="carol" value="carol">
+                    <input type="number" class="validator-weight" placeholder="1" value="1" min="1" oninput="updateTotalWeight()">
+                    <button class="btn btn-danger btn-small" onclick="removeValidator(this)">❌</button>
+                </div>
+            `;
+            
+            document.getElementById('thresholdSlider').value = '2';
+            updateTotalWeight();
+            updateThreshold();
+        };
+
+        // Tab switching function
+        window.switchTab = (tabName) => {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Remove active class from all tab buttons
+            document.querySelectorAll('.tab-button').forEach(button => {
+                button.classList.remove('active');
+            });
+            
+            // Show selected tab content
+            const targetContent = document.getElementById(tabName + 'TabContent');
+            const targetButton = document.getElementById(tabName + 'Tab');
+            
+            if (targetContent && targetButton) {
+                targetContent.classList.add('active');
+                targetButton.classList.add('active');
+            }
+        };
+
         // Time machine functions
         window.goToHistoryStart = () => {
             const history = XLN.getHistory();
@@ -1598,6 +2291,9 @@
                         break;
                 }
             });
+            
+            // Initialize simple entity formation
+            updateTotalWeight();
         });
 
         // Add entity filter event listener
